@@ -1,0 +1,41 @@
+<div id="lpd-container">
+  <form class="col s12 ">
+    <div class="panel-heading">
+      <h5>
+        <b>Restaurantes</b>
+      </h5>
+    </div>
+    <div class="panel-body form-group">
+      Nome
+      <input name="nome" class="form-control" id="nomeRestaurante" [(ngModel)]="restauranteSearch.nome">
+      <button mat-fab type="button" id="pesquisar" (click)="pesquisarRestaurante(restauranteSearch)">
+        <i id="iconSubmit" class="material-icons desabilitado">send</i>
+      </button>
+      <button mat-fab type="button" id="cadastrar" (click)="cadastrarRestauranteModal.show()">
+        <i id="iconSubmit" class="material-icons desabilitado">send</i>
+      </button>
+
+      <div *ngFor="let restaurante of restaurantes; let p = index" class="col-md-12 containerDSL">
+        <table (mouseenter)="mouseEnter(c, p)" (mouseleave)="mouseLeave(c, p)">
+          <tr>
+            <div class="scriptDSL" id="{{c}}_{{p}}_1">
+              <td class="ordemDSL">
+                <b>{{restaurante.nome}}</b>
+              </td>
+              <td>
+                <a href="#" (click)="deleteRestaurante(restaurante)">
+                  <i class="material-icons dslIcons" id="{{p}}_deleteRestaurante">add_circle_outline</i>
+                </a>
+              </td>
+              <td>
+                <a href="#" (click)="editRestaurante(restaurante)">
+                  <i class="material-icons dslIcons" id="{{p}}_editRestaurante">remove_circle_outline</i>
+                </a>
+              </td>
+            </div>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>
